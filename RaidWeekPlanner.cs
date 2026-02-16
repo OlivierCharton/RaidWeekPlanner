@@ -74,7 +74,7 @@ namespace RaidWeekPlanner
             CornerIcon = new Controls.CornerIcon(ContentsManager)
             {
                 Parent = GameService.Graphics.SpriteScreen,
-                Priority = 683537108
+                Priority = 683537109
             };
 
             Gw2ApiService = new Gw2ApiService(Gw2ApiManager, Logger);
