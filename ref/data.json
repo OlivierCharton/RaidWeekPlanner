@@ -1,0 +1,256 @@
+{
+  "Areas": [
+    {
+      "Id": 1,
+      "Key": "W1",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "vale_guardian"
+        },
+        {
+          "Id": 2,
+          "Key": "spirit_woods",
+          "IsDisabled": true
+        },
+        {
+          "Id": 3,
+          "Key": "gorseval"
+        },
+        {
+          "Id": 4,
+          "Key": "sabetha"
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Key": "W2",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "slothasor"
+        },
+        {
+          "Id": 2,
+          "Key": "bandit_trio",
+          "IsDisabled": true
+        },
+        {
+          "Id": 3,
+          "Key": "matthias"
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Key": "W3",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "escort",
+          "IsDisabled": true
+        },
+        {
+          "Id": 2,
+          "Key": "keep_construct"
+        },
+        {
+          "Id": 3,
+          "Key": "twisted_castle",
+          "IsDisabled": true
+        },
+        {
+          "Id": 4,
+          "Key": "xera"
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Key": "W4",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "cairn"
+        },
+        {
+          "Id": 2,
+          "Key": "mursaat_overseer"
+        },
+        {
+          "Id": 3,
+          "Key": "samarog"
+        },
+        {
+          "Id": 4,
+          "Key": "deimos"
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Key": "W5",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "soulless_horror"
+        },
+        {
+          "Id": 2,
+          "Key": "river_of_souls",
+          "IsDisabled": true
+        },
+        {
+          "Id": 3,
+          "Key": "statues_of_grenth",
+          "IsDisabled": true
+        },
+        {
+          "Id": 4,
+          "Key": "voice_in_the_void"
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Key": "W6",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "conjured_amalgamate"
+        },
+        {
+          "Id": 2,
+          "Key": "twin_largos"
+        },
+        {
+          "Id": 3,
+          "Key": "qadim"
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Key": "W7",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "gate",
+          "IsDisabled": true
+        },
+        {
+          "Id": 2,
+          "Key": "adina"
+        },
+        {
+          "Id": 3,
+          "Key": "sabir"
+        },
+        {
+          "Id": 4,
+          "Key": "qadim_the_peerless"
+        }
+      ]
+    },
+    {
+      "Id": 8,
+      "Key": "W8",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "camp",
+          "IsDisabled": true
+        },
+        {
+          "Id": 2,
+          "Key": "greer"
+        },
+        {
+          "Id": 3,
+          "Key": "decima"
+        },
+        {
+          "Id": 4,
+          "Key": "ura"
+        }
+      ]
+    },
+    {
+      "Id": 9,
+      "Key": "IBS",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "shiverpeaks_pass"
+        },
+        {
+          "Id": 2,
+          "Key": "voice_and_claw"
+        },
+        {
+          "Id": 3,
+          "Key": "fraenir_of_jormag"
+        },
+        {
+          "Id": 4,
+          "Key": "whisper_of_jormag"
+        },
+        {
+          "Id": 5,
+          "Key": "boneskinner"
+        }
+      ]
+    },
+    {
+      "Id": 10,
+      "Key": "EOD",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "aetherblade_hideout"
+        },
+        {
+          "Id": 2,
+          "Key": "xunlai_jade_junkyard"
+        },
+        {
+          "Id": 3,
+          "Key": "kaineng_overlook"
+        },
+        {
+          "Id": 4,
+          "Key": "harvest_temple"
+        },
+        {
+          "Id": 5,
+          "Key": "old_lion_court"
+        }
+      ]
+    },
+    {
+      "Id": 11,
+      "Key": "SOTO",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "cosmic_observatory"
+        },
+        {
+          "Id": 2,
+          "Key": "temple_of_febe"
+        }
+      ]
+    },
+    {
+      "Id": 12,
+      "Key": "VOE",
+      "Encounters": [
+        {
+          "Id": 1,
+          "Key": "kela"
+        }
+      ]
+    }
+  ]
+}

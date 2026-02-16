@@ -1,0 +1,48 @@
+{
+  "StartDate": "2026-02-06T01:00:00.00+01:00",
+  //"StartDate": "2026-02-12T01:00:00.00+01:00",
+  "Boss1": [
+    "shiverpeaks_pass",
+    "voice_and_claw",
+    "fraenir_of_jormag",
+    "gorseval",
+    "cairn",
+    "mursaat_overseer"
+  ],
+  "Boss2": [
+    "aetherblade_hideout",
+    "sabir",
+    "whisper_of_jormag",
+    "vale_guardian",
+    "cosmic_observatory",
+    "cold_war",
+    "boneskinner",
+    "sabetha",
+    "xunlai_jade_junkyard",
+    "temple_of_febe",
+    "keep_construct",
+    "kela"
+  ],
+  "Boss3": [
+    "slothasor",
+    "matthias",
+    "xera",
+    "samarog",
+    "conjured_amalgamate",
+    "twin_largos",
+    "decima",
+    "adina",
+    "old_lion_court",
+    "ura",
+    "kaineng_overlook",
+    "deimos"
+  ],
+  "Boss4": [
+    "qadim",
+    "qadim_the_peerless",
+    "soulless_horror",
+    "harvest_temple",
+    "voice_in_the_void",
+    "greer"
+  ]
+}

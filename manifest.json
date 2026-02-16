@@ -1,0 +1,31 @@
+{
+  "name": "RaidWeekPlanner",
+  "version": "1.0.0",
+  "namespace": "japyx.raidweekplanner",
+  "package": "RaidWeekPlanner.dll",
+  "manifest_version": 1,
+  "description": "A module to help you plan your weekly raids and raid encounters.",
+  "dependencies": {
+    "bh.blishhud": ">=1.0.0"
+  },
+  "url": "https://github.com/OlivierCharton/RaidWeekPlanner",
+  "contributors": [
+    {
+      "name": "Japyx",
+      "username": "Japyx.3265"
+    }
+  ],
+  "directories": [],
+  "actions": [],
+  "enabled_without_gw2": false,
+  "api_permissions": {
+    "account": {
+      "optional": false,
+      "details": "Needed to check for completed events."
+    },
+    "progression": {
+      "optional": false,
+      "details": "Needed to check for completed events."
+    }
+  }
+}

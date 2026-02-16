@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--contentFiles: removes the Content folder that pops up in the solution explorer -->
+		<PackageReference Include="BlishHUD" Version="1.0.0" ExcludeAssets="runtime;contentFiles;analyzers" />
+		<PackageReference Include="SemanticVersioning" Version="1.2.2" />
+		<!--building the project fails otherwise, when BlishHud assets are excluded -->
+		<PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="System.ComponentModel.DataAnnotations" />
+	  <Reference Include="System.Net.Http" />
+	  <Reference Include="System.Windows.Forms" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Ressources\areas.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>areas.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Ressources\encounters.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>encounters.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Ressources\factions.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>factions.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Ressources\strings.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>strings.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Ressources\areas.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>areas.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Ressources\encounters.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>encounters.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Ressources\factions.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>factions.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>RaidWeekPlanner</CustomToolNamespace>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Ressources\strings.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>strings.Designer.cs</LastGenOutput>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CustomToolNamespace>RaidWeekPlanner</CustomToolNamespace>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="ref\data.json">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>
