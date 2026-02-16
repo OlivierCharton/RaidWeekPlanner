@@ -262,7 +262,7 @@
     <value>Qadim L'inégalé</value>
   </data>
   <data name="river_of_soulsLabel" xml:space="preserve">
-    <value>River</value>
+    <value>Rivière</value>
   </data>
   <data name="river_of_soulsTooltip" xml:space="preserve">
     <value>La Rivière des Âmes</value>
@@ -328,7 +328,7 @@
     <value>Jumeaux largos</value>
   </data>
   <data name="twisted_castleLabel" xml:space="preserve">
-    <value>twisted</value>
+    <value>Castle</value>
   </data>
   <data name="twisted_castleTooltip" xml:space="preserve">
     <value>Château corrompu</value>
@@ -346,7 +346,7 @@
     <value>Gardien de la Vallée</value>
   </data>
   <data name="voice_and_clawLabel" xml:space="preserve">
-    <value>Voices</value>
+    <value>Voix</value>
   </data>
   <data name="voice_and_clawTooltip" xml:space="preserve">
     <value>Voix et Griffe des Déchus</value>

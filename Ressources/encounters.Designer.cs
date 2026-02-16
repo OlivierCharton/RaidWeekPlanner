@@ -691,7 +691,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à twisted.
+        ///   Recherche une chaîne localisée semblable à Castle.
         /// </summary>
         internal static string twisted_castleLabel {
             get {
