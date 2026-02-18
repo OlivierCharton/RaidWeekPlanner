@@ -33,7 +33,7 @@ namespace RaidWeekPlanner.UI.Views
         private List<string> _neverOnTheMenu;
         private bool _showClears = true;
 
-        private List<(Panel, Label)> _tablePanels = new();
+        private List<(Panel, Label, string)> _tablePanels = new();
 
         private ResourceManager _areasResx;
         private ResourceManager _encountersResx;
@@ -202,7 +202,7 @@ namespace RaidWeekPlanner.UI.Views
                         {
                             var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{currentEncounter.Key}Label"), () => _encountersResx.GetString($"{currentEncounter.Key}Tooltip"), _tableContainer);
                             label.panel.BackgroundColor = GetBackgroundColor(currentEncounter.Key);
-                            _tablePanels.Add(label);
+                            _tablePanels.Add((label.panel, label.label, currentEncounter.Key));
                         }
                         catch (System.Exception)
                         {
@@ -210,7 +210,8 @@ namespace RaidWeekPlanner.UI.Views
                     }
                     else
                     {
-                        _tablePanels.Add(UiUtils.CreateLabel(() => "", () => "", _tableContainer));
+                        var emptyLabel = UiUtils.CreateLabel(() => "", () => "", _tableContainer);
+                        _tablePanels.Add((emptyLabel.panel, emptyLabel.label, string.Empty));
                     }
                 }
                 count++;
@@ -248,11 +249,20 @@ namespace RaidWeekPlanner.UI.Views
         private void ToggleClears()
         {
             _showClears = !_showClears;
-            DrawData();
+
+            foreach (var tablePanel in _tablePanels)
+            {
+                tablePanel.Item1.BackgroundColor = GetBackgroundColor(tablePanel.Item3);
+            }
         }
 
         private Color GetBackgroundColor(string encounterKey)
         {
+            if (string.IsNullOrEmpty(encounterKey))
+            {
+                return Colors.Empty;
+            }
+
             if (_showClears && _accountClears != null && _accountClears.Contains(encounterKey))
             {
                 return Colors.Done;
