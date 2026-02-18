@@ -86,21 +86,21 @@ namespace RaidWeekPlanner.Services
                 .Select(e => e.Key)];
         }
 
-        public List<string> GetEventsForCurrentWeek()
+        public Dictionary<int, List<string>> GetEventsForCurrentWeek()
         {
             // Trouver le lundi de la semaine en cours
             DateTime monday = GetMonday(DateTime.UtcNow);
 
-            var weekEvents = new List<string>();
+            var weekEvents = new Dictionary<int, List<string>>();
 
             // Parcourir du lundi au dimanche (7 jours)
             for (int dayOffset = 0; dayOffset < 7; dayOffset++)
             {
                 DateTime currentDay = monday.AddDays(dayOffset);
-                weekEvents.AddRange(GetEventsForDate(currentDay));
+                weekEvents.Add(dayOffset, GetEventsForDate(currentDay));
             }
 
-            return [.. weekEvents.Distinct()];
+            return weekEvents;
         }
 
         private async Task<bool> RefreshAccountName()

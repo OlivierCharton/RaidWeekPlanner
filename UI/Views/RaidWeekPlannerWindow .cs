@@ -29,12 +29,13 @@ namespace RaidWeekPlanner.UI.Views
         private List<Area> _areas;
 
         private List<string> _accountClears;
-        private List<string> _bounties;
+        private Dictionary<int, List<string>> _bounties;
         private List<string> _neverOnTheMenu;
         private bool _showClears = true;
 
         private List<(Panel, Label, string)> _tablePanels = new();
 
+        private ResourceManager _stringsResx;
         private ResourceManager _areasResx;
         private ResourceManager _encountersResx;
 
@@ -54,6 +55,7 @@ namespace RaidWeekPlanner.UI.Views
             _bounties = businessService.GetEventsForCurrentWeek();
             _neverOnTheMenu = businessService.GetNeverOnTheMenu();
 
+            _stringsResx = strings.ResourceManager;
             _areasResx = areas.ResourceManager;
             _encountersResx = encounters.ResourceManager;
         }
@@ -200,7 +202,7 @@ namespace RaidWeekPlanner.UI.Views
 
                         try
                         {
-                            var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{currentEncounter.Key}Label"), () => _encountersResx.GetString($"{currentEncounter.Key}Tooltip"), _tableContainer);
+                            var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{currentEncounter.Key}Label"), () => GetTooltip(currentEncounter.Key), _tableContainer);
                             label.panel.BackgroundColor = GetBackgroundColor(currentEncounter.Key);
                             _tablePanels.Add((label.panel, label.label, currentEncounter.Key));
                         }
@@ -216,6 +218,21 @@ namespace RaidWeekPlanner.UI.Views
                 }
                 count++;
             }
+        }
+
+        private string GetTooltip(string currentEncounter)
+        {
+            string cplTootlip = string.Empty;
+            if (_bounties != null && _bounties.SelectMany(b => b.Value).Contains(currentEncounter))
+            {
+                var allDays = _bounties
+                    .Where(b => b.Value.Contains(currentEncounter))
+                    .Select(b => _stringsResx.GetString($"day{b.Key}"));
+
+                cplTootlip = $" - {string.Join(", ", allDays)}";
+            }
+
+            return $"{_encountersResx.GetString($"{currentEncounter}Tooltip")}{cplTootlip}";
         }
 
         private void DrawLegend(FlowPanel container)
@@ -267,7 +284,7 @@ namespace RaidWeekPlanner.UI.Views
             {
                 return Colors.Done;
             }
-            else if (_bounties != null && _bounties.Contains(encounterKey))
+            else if (_bounties != null && _bounties.SelectMany(b => b.Value).Contains(encounterKey))
             {
                 return Colors.Planned;
             }

@@ -153,4 +153,25 @@
   <data name="MainWindow_Button_Toggle_Label" xml:space="preserve">
     <value>Bascule affichage</value>
   </data>
+  <data name="day0" xml:space="preserve">
+    <value>Lundi</value>
+  </data>
+  <data name="day6" xml:space="preserve">
+    <value>Dimanche</value>
+  </data>
+  <data name="day5" xml:space="preserve">
+    <value>Samedi</value>
+  </data>
+  <data name="day4" xml:space="preserve">
+    <value>Vendredi</value>
+  </data>
+  <data name="day3" xml:space="preserve">
+    <value>Jeudi</value>
+  </data>
+  <data name="day2" xml:space="preserve">
+    <value>Mercredi</value>
+  </data>
+  <data name="day1" xml:space="preserve">
+    <value>Mardi</value>
+  </data>
 </root>

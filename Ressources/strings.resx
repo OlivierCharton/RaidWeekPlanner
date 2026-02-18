@@ -153,4 +153,25 @@
   <data name="MainWindow_Button_Toggle_Label" xml:space="preserve">
     <value>Toggle Clears</value>
   </data>
+  <data name="day0" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="day6" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="day5" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="day4" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="day3" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="day2" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="day1" xml:space="preserve">
+    <value>Tueday</value>
+  </data>
 </root>

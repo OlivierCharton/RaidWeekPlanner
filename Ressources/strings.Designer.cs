@@ -79,6 +79,69 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Monday.
+        /// </summary>
+        internal static string day0 {
+            get {
+                return ResourceManager.GetString("day0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tueday.
+        /// </summary>
+        internal static string day1 {
+            get {
+                return ResourceManager.GetString("day1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Wednesday.
+        /// </summary>
+        internal static string day2 {
+            get {
+                return ResourceManager.GetString("day2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Thursday.
+        /// </summary>
+        internal static string day3 {
+            get {
+                return ResourceManager.GetString("day3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Friday.
+        /// </summary>
+        internal static string day4 {
+            get {
+                return ResourceManager.GetString("day4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Saturday.
+        /// </summary>
+        internal static string day5 {
+            get {
+                return ResourceManager.GetString("day5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sunday.
+        /// </summary>
+        internal static string day6 {
+            get {
+                return ResourceManager.GetString("day6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Done.
         /// </summary>
         internal static string Legend_Done {
