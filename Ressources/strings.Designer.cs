@@ -223,6 +223,24 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Toggle Week display.
+        /// </summary>
+        internal static string MainWindow_Button_Toggle_Week_Label {
+            get {
+                return ResourceManager.GetString("MainWindow_Button_Toggle_Week_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hide / Show week display.
+        /// </summary>
+        internal static string MainWindow_Button_Toggle_Week_Tooltip {
+            get {
+                return ResourceManager.GetString("MainWindow_Button_Toggle_Week_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à No data, please wait a moment and refresh!.
         /// </summary>
         internal static string NoData {

@@ -6,6 +6,7 @@ using RaidWeekPlanner.Domain;
 using RaidWeekPlanner.Ressources;
 using RaidWeekPlanner.Services;
 using RaidWeekPlanner.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
@@ -23,7 +24,7 @@ namespace RaidWeekPlanner.UI.Views
         private LoadingSpinner _loadingSpinner;
         private FlowPanel _tableContainer;
 
-        private readonly List<Label> _labels = new();
+        private List<Label> _labels = new();
         private readonly List<StandardButton> _buttons = new();
 
         private List<Area> _areas;
@@ -32,6 +33,7 @@ namespace RaidWeekPlanner.UI.Views
         private Dictionary<int, List<string>> _bounties;
         private List<string> _neverOnTheMenu;
         private bool _showClears = true;
+        private bool _showWeek = false;
 
         private List<(Panel, Label, string)> _tablePanels = new();
 
@@ -121,6 +123,15 @@ namespace RaidWeekPlanner.UI.Views
             });
             toggleButton.Click += (s, e) => ToggleClears();
 
+            StandardButton drawWeeklyClearsButton;
+            _buttons.Add(drawWeeklyClearsButton = new Controls.StandardButton()
+            {
+                SetLocalizedText = () => strings.MainWindow_Button_Toggle_Week_Label,
+                SetLocalizedTooltip = () => strings.MainWindow_Button_Toggle_Week_Tooltip,
+                Parent = actionContainer
+            });
+            drawWeeklyClearsButton.Click += (s, e) => ToggleWeeklyClears();
+
             #endregion Actions
 
             #region Spinner
@@ -153,7 +164,10 @@ namespace RaidWeekPlanner.UI.Views
         {
             _accountClears = accountClears;
 
-            DrawData();
+            if (!_showWeek)
+            {
+                DrawData();
+            }
         }
 
         private void AddHeaders(FlowPanel container)
@@ -169,10 +183,66 @@ namespace RaidWeekPlanner.UI.Views
                 }
             }
         }
+
+        private void AddWeekHeaders(FlowPanel container)
+        {
+            List<int> days = [0, 1, 2, 3, 4, 5, 6];
+            foreach (var day in days)
+            {
+                _labels.Add(UiUtils.CreateLabel(() => _stringsResx.GetString($"day{day}"), () => "", container, amount: 7).label);
+            }
+        }
+
         private void DrawData()
         {
             ClearLines();
             DrawLines();
+        }
+
+        private void ToggleWeeklyClears()
+        {
+            ClearHeaders();
+            ClearLines();
+
+            if (_showWeek)
+            {
+                AddHeaders(_tableContainer);
+                DrawLines();
+            }
+            else
+            {
+                AddWeekHeaders(_tableContainer);
+                DrawWeeklyClears();
+            }
+
+            _showWeek = !_showWeek;
+        }
+
+        private void DrawWeeklyClears()
+        {
+            // Workaround for localization change out of range bug
+            List<int> rows = [0, 1, 2, 3];
+            foreach (var row in rows)
+            {
+                foreach (var bounty in _bounties)
+                {
+                    var encounter = bounty.Value[row];
+
+                    var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{encounter}Label"), () => GetTooltip(encounter), _tableContainer, amount: 7);
+                    label.panel.BackgroundColor = Colors.Todo;
+                    _tablePanels.Add((label.panel, label.label, encounter));
+                }
+            }
+        }
+
+        private void ClearHeaders()
+        {
+            for (int i = _labels.Count - 1; i >= 0; i--)
+            {
+                _labels.ElementAt(i).Dispose();
+            }
+
+            _labels = [];
         }
 
         private void ClearLines()
@@ -181,6 +251,8 @@ namespace RaidWeekPlanner.UI.Views
             {
                 _tablePanels.ElementAt(i).Item1.Dispose();
             }
+
+            _tablePanels = [];
         }
 
         private void DrawLines()

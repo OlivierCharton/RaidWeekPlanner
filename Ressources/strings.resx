@@ -129,6 +129,9 @@
   <data name="MainWindow_Button_Toggle_Tooltip" xml:space="preserve">
     <value>Hide / Show clears</value>
   </data>
+  <data name="MainWindow_Button_Toggle_Week_Tooltip" xml:space="preserve">
+    <value>Hide / Show week display</value>
+  </data>
   <data name="MainWindow_Button_Refresh_Label" xml:space="preserve">
     <value>Refresh </value>
   </data>
@@ -152,6 +155,9 @@
   </data>
   <data name="MainWindow_Button_Toggle_Label" xml:space="preserve">
     <value>Toggle Clears</value>
+  </data>
+  <data name="MainWindow_Button_Toggle_Week_Label" xml:space="preserve">
+    <value>Toggle Week display</value>
   </data>
   <data name="day0" xml:space="preserve">
     <value>Monday</value>
