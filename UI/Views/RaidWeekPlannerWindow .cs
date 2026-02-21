@@ -19,24 +19,27 @@ namespace RaidWeekPlanner.UI.Views
 {
     public class RaidWeekPlannerWindow : StandardWindow
     {
-        private readonly BusinessService _businessService;
-
+        // Components
         private LoadingSpinner _loadingSpinner;
         private FlowPanel _tableContainer;
-
+        private List<(Panel, Label, string)> _tablePanels = new();
         private List<Label> _labels = new();
         private readonly List<StandardButton> _buttons = new();
+        private StandardButton _toggleEncounterDrawModeBtn;
+        private StandardButton _toggleTableDrawModeBtn;
 
+        // Data
         private List<Area> _areas;
-
-        private List<string> _accountClears;
         private Dictionary<int, List<string>> _bounties;
         private List<string> _neverOnTheMenu;
-        private bool _showClears = true;
-        private bool _showWeek = false;
+        private List<string> _accountClears;
 
-        private List<(Panel, Label, string)> _tablePanels = new();
+        // Params
+        private TableDrawMode _tableDrawMode = TableDrawMode.Week;
+        private EncounterDrawMode _encounterDrawMode = EncounterDrawMode.Progression;
 
+        // DI
+        private readonly BusinessService _businessService;
         private ResourceManager _stringsResx;
         private ResourceManager _areasResx;
         private ResourceManager _encountersResx;
@@ -52,14 +55,11 @@ namespace RaidWeekPlanner.UI.Views
             SavesPosition = true;
 
             _businessService = businessService;
-
-            _areas = businessService.GetAreas();
-            _bounties = businessService.GetEventsForCurrentWeek();
-            _neverOnTheMenu = businessService.GetNeverOnTheMenu();
-
             _stringsResx = strings.ResourceManager;
             _areasResx = areas.ResourceManager;
             _encountersResx = encounters.ResourceManager;
+
+            LoadData();
         }
 
         public void BuildUi()
@@ -91,8 +91,6 @@ namespace RaidWeekPlanner.UI.Views
             };
             _tableContainer.ContentResized += TableContainer_ContentResized;
 
-            AddHeaders(_tableContainer);
-
             #endregion Notifications
 
             #region Actions
@@ -110,27 +108,26 @@ namespace RaidWeekPlanner.UI.Views
             _buttons.Add(button = new Controls.StandardButton()
             {
                 SetLocalizedText = () => strings.MainWindow_Button_Refresh_Label,
+                SetLocalizedTooltip = () => strings.MainWindow_Button_Refresh_Tooltip,
                 Parent = actionContainer
             });
             button.Click += async (s, e) => await RefreshData();
 
-            StandardButton toggleButton;
-            _buttons.Add(toggleButton = new Controls.StandardButton()
+            _buttons.Add(_toggleEncounterDrawModeBtn = new Controls.StandardButton()
             {
-                SetLocalizedText = () => strings.MainWindow_Button_Toggle_Label,
-                SetLocalizedTooltip = () => strings.MainWindow_Button_Toggle_Tooltip,
+                SetLocalizedText = () => GetToggleEncounterDrawModeBtnLabel(),
+                SetLocalizedTooltip = () => strings.MainWindow_Button_ToggleEncounterDrawMode_Tooltip,
                 Parent = actionContainer
             });
-            toggleButton.Click += (s, e) => ToggleClears();
+            _toggleEncounterDrawModeBtn.Click += (s, e) => ToggleEncounterDrawMode();
 
-            StandardButton drawWeeklyClearsButton;
-            _buttons.Add(drawWeeklyClearsButton = new Controls.StandardButton()
+            _buttons.Add(_toggleTableDrawModeBtn = new Controls.StandardButton()
             {
-                SetLocalizedText = () => strings.MainWindow_Button_Toggle_Week_Label,
-                SetLocalizedTooltip = () => strings.MainWindow_Button_Toggle_Week_Tooltip,
+                SetLocalizedText = () => GetToggleTableDrawModeBtnLabel(),
+                SetLocalizedTooltip = () => strings.MainWindow_Button_ToggleTableDrawMode_Tooltip,
                 Parent = actionContainer
             });
-            drawWeeklyClearsButton.Click += (s, e) => ToggleWeeklyClears();
+            _toggleTableDrawModeBtn.Click += (s, e) => ToggleTableDrawMode();
 
             #endregion Actions
 
@@ -153,160 +150,36 @@ namespace RaidWeekPlanner.UI.Views
                 ControlPadding = new(5),
             };
 
-            DrawLegend(legendContainer);
-
             #endregion Legend
 
-            DrawData();
+            DrawLegend(legendContainer);
+
+            DrawTable();
         }
 
         public void InjectData(List<string> accountClears)
         {
             _accountClears = accountClears;
 
-            if (!_showWeek)
-            {
-                DrawData();
-            }
+            UpdateColors();
         }
 
-        private void AddHeaders(FlowPanel container)
+        private void LoadData()
         {
-            foreach (var area in _areas)
-            {
-                try
-                {
-                    _labels.Add(UiUtils.CreateLabel(() => _areasResx.GetString($"{area.Key}Label"), () => _areasResx.GetString($"{area.Key}Tooltip"), container).label);
-                }
-                catch (System.Exception)
-                {
-                }
-            }
+            _areas = _businessService.GetAreas();
+            _bounties = _businessService.GetEventsForCurrentWeek();
+            _neverOnTheMenu = _businessService.GetNeverOnTheMenu();
         }
 
-        private void AddWeekHeaders(FlowPanel container)
-        {
-            List<int> days = [0, 1, 2, 3, 4, 5, 6];
-            foreach (var day in days)
-            {
-                _labels.Add(UiUtils.CreateLabel(() => _stringsResx.GetString($"day{day}"), () => "", container, amount: 7).label);
-            }
-        }
+        #region Labels
+        public string GetToggleEncounterDrawModeBtnLabel() => _encounterDrawMode == EncounterDrawMode.Neutral ?
+                strings.MainWindow_Button_ToggleEncounterDrawMode_Neutral : strings.MainWindow_Button_ToggleEncounterDrawMode_Progression;
 
-        private void DrawData()
-        {
-            ClearLines();
-            DrawLines();
-        }
+        public string GetToggleTableDrawModeBtnLabel() => _tableDrawMode == TableDrawMode.Week ?
+                strings.MainWindow_Button_ToggleTableDrawMode_Week : strings.MainWindow_Button_ToggleTableDrawMode_Areas;
+        #endregion Labels
 
-        private void ToggleWeeklyClears()
-        {
-            ClearHeaders();
-            ClearLines();
-
-            if (_showWeek)
-            {
-                AddHeaders(_tableContainer);
-                DrawLines();
-            }
-            else
-            {
-                AddWeekHeaders(_tableContainer);
-                DrawWeeklyClears();
-            }
-
-            _showWeek = !_showWeek;
-        }
-
-        private void DrawWeeklyClears()
-        {
-            // Workaround for localization change out of range bug
-            List<int> rows = [0, 1, 2, 3];
-            foreach (var row in rows)
-            {
-                foreach (var bounty in _bounties)
-                {
-                    var encounter = bounty.Value[row];
-
-                    var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{encounter}Label"), () => GetTooltip(encounter), _tableContainer, amount: 7);
-                    label.panel.BackgroundColor = Colors.Todo;
-                    _tablePanels.Add((label.panel, label.label, encounter));
-                }
-            }
-        }
-
-        private void ClearHeaders()
-        {
-            for (int i = _labels.Count - 1; i >= 0; i--)
-            {
-                _labels.ElementAt(i).Dispose();
-            }
-
-            _labels = [];
-        }
-
-        private void ClearLines()
-        {
-            for (int i = _tablePanels.Count - 1; i >= 0; i--)
-            {
-                _tablePanels.ElementAt(i).Item1.Dispose();
-            }
-
-            _tablePanels = [];
-        }
-
-        private void DrawLines()
-        {
-            //Lines
-            bool keepDrawing = true;
-            int count = 1;
-
-            while (keepDrawing)
-            {
-                keepDrawing = false;
-
-                foreach (var area in _areas)
-                {
-                    if (area.Encounters.Count >= count)
-                    {
-                        keepDrawing = true;
-                        Encounter currentEncounter = area.Encounters[count - 1];
-
-                        try
-                        {
-                            var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{currentEncounter.Key}Label"), () => GetTooltip(currentEncounter.Key), _tableContainer);
-                            label.panel.BackgroundColor = GetBackgroundColor(currentEncounter.Key);
-                            _tablePanels.Add((label.panel, label.label, currentEncounter.Key));
-                        }
-                        catch (System.Exception)
-                        {
-                        }
-                    }
-                    else
-                    {
-                        var emptyLabel = UiUtils.CreateLabel(() => "", () => "", _tableContainer);
-                        _tablePanels.Add((emptyLabel.panel, emptyLabel.label, string.Empty));
-                    }
-                }
-                count++;
-            }
-        }
-
-        private string GetTooltip(string currentEncounter)
-        {
-            string cplTootlip = string.Empty;
-            if (_bounties != null && _bounties.SelectMany(b => b.Value).Contains(currentEncounter))
-            {
-                var allDays = _bounties
-                    .Where(b => b.Value.Contains(currentEncounter))
-                    .Select(b => _stringsResx.GetString($"day{b.Key}"));
-
-                cplTootlip = $" - {string.Join(", ", allDays)}";
-            }
-
-            return $"{_encountersResx.GetString($"{currentEncounter}Tooltip")}{cplTootlip}";
-        }
-
+        #region Draw
         private void DrawLegend(FlowPanel container)
         {
             var legend = UiUtils.CreateLabel(() => strings.Legend_Title, () => "", container, amount: 12);
@@ -324,50 +197,205 @@ namespace RaidWeekPlanner.UI.Views
             legend.panel.BackgroundColor = Colors.Done;
         }
 
-        private async Task RefreshData()
+        private void DrawTable()
         {
-            _loadingSpinner.Visible = true;
-
-            _accountClears = await _businessService.GetAccountClears(true);
-
-            DrawData();
-
-            _loadingSpinner.Visible = false;
+            if (_tableDrawMode == TableDrawMode.Week)
+            {
+                DrawTableAsWeek();
+            }
+            else if (_tableDrawMode == TableDrawMode.Areas)
+            {
+                DrawTableAsAreas();
+            }
         }
 
-        private void ToggleClears()
+        private void DrawTableAsWeek()
         {
-            _showClears = !_showClears;
+            AddHeadersAsWeek(_tableContainer);
+            DrawLinesAsWeek();
+        }
 
+        private void AddHeadersAsWeek(FlowPanel container)
+        {
+            List<int> days = [0, 1, 2, 3, 4, 5, 6];
+            foreach (var day in days)
+            {
+                _labels.Add(UiUtils.CreateLabel(() => _stringsResx.GetString($"day{day}"), () => "", container, amount: 7).label);
+            }
+        }
+
+        private void DrawLinesAsWeek()
+        {
+            // Workaround for localization change out of range bug
+            List<int> rows = [0, 1, 2, 3];
+            foreach (var row in rows)
+            {
+                foreach (var bounty in _bounties)
+                {
+                    var encounter = bounty.Value[row];
+
+                    var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{encounter}Label"), () => GetTooltip(encounter), _tableContainer, amount: 7);
+                    label.panel.BackgroundColor = GetBackgroundColor(encounter);
+                    _tablePanels.Add((label.panel, label.label, encounter));
+                }
+            }
+        }
+
+        private void DrawTableAsAreas()
+        {
+            AddHeadersAsAreas(_tableContainer);
+            DrawLinesAsAreas();
+        }
+
+        private void AddHeadersAsAreas(FlowPanel container)
+        {
+            foreach (var area in _areas)
+            {
+                _labels.Add(UiUtils.CreateLabel(() => _areasResx.GetString($"{area.Key}Label"), () => _areasResx.GetString($"{area.Key}Tooltip"), container).label);
+            }
+        }
+
+        private void DrawLinesAsAreas()
+        {
+            //Lines
+            bool keepDrawing = true;
+            int count = 1;
+
+            while (keepDrawing)
+            {
+                keepDrawing = false;
+
+                foreach (var area in _areas)
+                {
+                    if (area.Encounters.Count >= count)
+                    {
+                        keepDrawing = true;
+                        Encounter currentEncounter = area.Encounters[count - 1];
+
+                        var label = UiUtils.CreateLabel(() => _encountersResx.GetString($"{currentEncounter.Key}Label"), () => GetTooltip(currentEncounter.Key), _tableContainer);
+                        label.panel.BackgroundColor = GetBackgroundColor(currentEncounter.Key);
+                        _tablePanels.Add((label.panel, label.label, currentEncounter.Key));
+                    }
+                    else
+                    {
+                        var (panel, label) = UiUtils.CreateLabel(() => "", () => "", _tableContainer);
+                        _tablePanels.Add((panel, label, string.Empty));
+                    }
+                }
+                count++;
+            }
+        }
+
+        private void UpdateColors()
+        {
             foreach (var tablePanel in _tablePanels)
             {
                 tablePanel.Item1.BackgroundColor = GetBackgroundColor(tablePanel.Item3);
             }
         }
 
+        #endregion Draw
+
+        #region Clear
+        private void ClearTable()
+        {
+            _labels = [];
+            _tablePanels = [];
+
+            _tableContainer.ClearChildren();
+        }
+
+        #endregion Clear
+
+        #region Utils
+        private bool IsCleared(string key) => _accountClears?.Contains(key) == true;
+        private bool IsPlanned(string key) => _bounties?.SelectMany(b => b.Value).Contains(key) == true;
+
         private Color GetBackgroundColor(string encounterKey)
         {
             if (string.IsNullOrEmpty(encounterKey))
-            {
                 return Colors.Empty;
-            }
 
-            if (_showClears && _accountClears != null && _accountClears.Contains(encounterKey))
+            return (_tableDrawMode, _encounterDrawMode) switch
             {
-                return Colors.Done;
-            }
-            else if (_bounties != null && _bounties.SelectMany(b => b.Value).Contains(encounterKey))
-            {
-                return Colors.Planned;
-            }
-            else if (!_showClears && _neverOnTheMenu.Contains(encounterKey))
-            {
-                return Colors.None;
-            }
+                (TableDrawMode.Week, EncounterDrawMode.Neutral)
+                    => Colors.Planned,
 
-            return Colors.Todo;
+                (TableDrawMode.Week, EncounterDrawMode.Progression) when IsCleared(encounterKey)
+                    => Colors.Done,
+                (TableDrawMode.Week, EncounterDrawMode.Progression)
+                    => Colors.Planned,
+
+                (TableDrawMode.Areas, EncounterDrawMode.Neutral) when _neverOnTheMenu.Contains(encounterKey)
+                    => Colors.None,
+                (TableDrawMode.Areas, EncounterDrawMode.Neutral) when IsPlanned(encounterKey)
+                    => Colors.Planned,
+                (TableDrawMode.Areas, EncounterDrawMode.Neutral)
+                    => Colors.Todo,
+
+                (TableDrawMode.Areas, EncounterDrawMode.Progression) when IsCleared(encounterKey)
+                    => Colors.Done,
+                (TableDrawMode.Areas, EncounterDrawMode.Progression) when IsPlanned(encounterKey)
+                    => Colors.Planned,
+                (TableDrawMode.Areas, EncounterDrawMode.Progression)
+                    => Colors.Todo,
+
+                _ => Colors.Todo
+            };
         }
 
+        private string GetTooltip(string currentEncounter)
+        {
+            string cplTootlip = string.Empty;
+            if (_bounties != null && _bounties.SelectMany(b => b.Value).Contains(currentEncounter))
+            {
+                var allDays = _bounties
+                    .Where(b => b.Value.Contains(currentEncounter))
+                    .Select(b => _stringsResx.GetString($"day{b.Key}"));
+
+                cplTootlip = $" - {string.Join(", ", allDays)}";
+            }
+
+            return $"{_encountersResx.GetString($"{currentEncounter}Tooltip")}{cplTootlip}";
+        }
+        #endregion Utils
+
+        #region Actions
+        private async Task RefreshData()
+        {
+            _loadingSpinner.Visible = true;
+
+            _accountClears = await _businessService.GetAccountClears(true);
+
+            UpdateColors();
+
+            _loadingSpinner.Visible = false;
+        }
+
+        private void ToggleEncounterDrawMode()
+        {
+            _encounterDrawMode = _encounterDrawMode == EncounterDrawMode.Neutral ?
+                EncounterDrawMode.Progression : EncounterDrawMode.Neutral;
+
+            UpdateColors();
+
+            _toggleEncounterDrawModeBtn.Text = GetToggleEncounterDrawModeBtnLabel();
+        }
+
+        private void ToggleTableDrawMode()
+        {
+            _tableDrawMode = _tableDrawMode == TableDrawMode.Week ?
+                TableDrawMode.Areas : TableDrawMode.Week;
+
+            ClearTable();
+            DrawTable();
+
+            _toggleTableDrawModeBtn.Text = GetToggleTableDrawModeBtnLabel();
+        }
+        
+        #endregion Actions
+
+        #region Layout
         private void TableContainer_ContentResized(object sender, RegionChangedEventArgs e)
         {
             if (_labels?.Count >= 0)
@@ -397,5 +425,6 @@ namespace RaidWeekPlanner.UI.Views
                 }
             }
         }
+        #endregion Layout
     }
 }

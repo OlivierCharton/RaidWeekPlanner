@@ -126,11 +126,8 @@
   <data name="CornerIcon_Tooltip_Warning" xml:space="preserve">
     <value>RaidWeekPlanner - api error, please wait</value>
   </data>
-  <data name="MainWindow_Button_Toggle_Tooltip" xml:space="preserve">
-    <value>Hide / Show clears</value>
-  </data>
-  <data name="MainWindow_Button_Toggle_Week_Tooltip" xml:space="preserve">
-    <value>Hide / Show week display</value>
+  <data name="MainWindow_Button_ToggleEncounterDrawMode_Tooltip" xml:space="preserve">
+    <value>Show / Hide  clears</value>
   </data>
   <data name="MainWindow_Button_Refresh_Label" xml:space="preserve">
     <value>Refresh </value>
@@ -139,10 +136,10 @@
     <value>No data, please wait a moment and refresh!</value>
   </data>
   <data name="Legend_None" xml:space="preserve">
-    <value>N/A</value>
+    <value>Never</value>
   </data>
   <data name="Legend_Todo" xml:space="preserve">
-    <value>To do</value>
+    <value>Not planned</value>
   </data>
   <data name="Legend_Done" xml:space="preserve">
     <value>Done</value>
@@ -153,11 +150,11 @@
   <data name="Legend_Planned" xml:space="preserve">
     <value>Planned</value>
   </data>
-  <data name="MainWindow_Button_Toggle_Label" xml:space="preserve">
-    <value>Toggle Clears</value>
+  <data name="MainWindow_Button_ToggleEncounterDrawMode_Neutral" xml:space="preserve">
+    <value>Show Clears</value>
   </data>
-  <data name="MainWindow_Button_Toggle_Week_Label" xml:space="preserve">
-    <value>Toggle Week display</value>
+  <data name="MainWindow_Button_ToggleEncounterDrawMode_Progression" xml:space="preserve">
+    <value>Hide Clears</value>
   </data>
   <data name="day0" xml:space="preserve">
     <value>Monday</value>
@@ -179,5 +176,17 @@
   </data>
   <data name="day1" xml:space="preserve">
     <value>Tueday</value>
+  </data>
+  <data name="MainWindow_Button_Refresh_Tooltip" xml:space="preserve">
+    <value>Refresh clears and update colors</value>
+  </data>
+  <data name="MainWindow_Button_ToggleTableDrawMode_Week" xml:space="preserve">
+    <value>Show areas</value>
+  </data>
+  <data name="MainWindow_Button_ToggleTableDrawMode_Areas" xml:space="preserve">
+    <value>Show week</value>
+  </data>
+  <data name="MainWindow_Button_ToggleTableDrawMode_Tooltip" xml:space="preserve">
+    <value>Toggle between week / areas display</value>
   </data>
 </root>

@@ -126,11 +126,8 @@
   <data name="CornerIcon_Tooltip_Warning" xml:space="preserve">
     <value>RaidWeekPlanner - erreur avec l'api, veuillez patienter</value>
   </data>
-  <data name="MainWindow_Button_Toggle_Tooltip" xml:space="preserve">
-    <value>Masquer / Afficher les clears</value>
-  </data>
-  <data name="MainWindow_Button_Toggle_Week_Tooltip" xml:space="preserve">
-    <value>Masquer / Afficher l'affichage de la semaine</value>
+  <data name="MainWindow_Button_ToggleEncounterDrawMode_Tooltip" xml:space="preserve">
+    <value>Afficher / Masquer la progression</value>
   </data>
   <data name="MainWindow_Button_Refresh_Label" xml:space="preserve">
     <value>Rafraîchir</value>
@@ -139,10 +136,10 @@
     <value>Pas de données, veuillez patienter et réessayer !</value>
   </data>
   <data name="Legend_None" xml:space="preserve">
-    <value>Non programmé</value>
+    <value>Hors rotation</value>
   </data>
   <data name="Legend_Todo" xml:space="preserve">
-    <value>A faire</value>
+    <value>Non planifié</value>
   </data>
   <data name="Legend_Done" xml:space="preserve">
     <value>Terminé</value>
@@ -153,11 +150,11 @@
   <data name="Legend_Planned" xml:space="preserve">
     <value>Plannifié</value>
   </data>
-  <data name="MainWindow_Button_Toggle_Label" xml:space="preserve">
-    <value>Bascule affichage</value>
+  <data name="MainWindow_Button_ToggleEncounterDrawMode_Neutral" xml:space="preserve">
+    <value>Afficher progression</value>
   </data>
-  <data name="MainWindow_Button_Toggle_Week_Label" xml:space="preserve">
-    <value>Bascule semaine</value>
+  <data name="MainWindow_Button_ToggleEncounterDrawMode_Progression" xml:space="preserve">
+    <value>Masquer progression</value>
   </data>
   <data name="day0" xml:space="preserve">
     <value>Lundi</value>
@@ -179,5 +176,17 @@
   </data>
   <data name="day1" xml:space="preserve">
     <value>Mardi</value>
+  </data>
+  <data name="MainWindow_Button_Refresh_Tooltip" xml:space="preserve">
+    <value>Rafraîchir les clears et mettre à jour les couleurs</value>
+  </data>
+  <data name="MainWindow_Button_ToggleTableDrawMode_Week" xml:space="preserve">
+    <value>Afficher les zones</value>
+  </data>
+  <data name="MainWindow_Button_ToggleTableDrawMode_Areas" xml:space="preserve">
+    <value>Afficher la semaine</value>
+  </data>
+  <data name="MainWindow_Button_ToggleTableDrawMode_Tooltip" xml:space="preserve">
+    <value>Basculer entre affichage par semaine ou par zone</value>
   </data>
 </root>

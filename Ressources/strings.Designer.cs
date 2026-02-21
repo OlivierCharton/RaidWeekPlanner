@@ -151,7 +151,7 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à N/A.
+        ///   Recherche une chaîne localisée semblable à Never.
         /// </summary>
         internal static string Legend_None {
             get {
@@ -178,7 +178,7 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à To do.
+        ///   Recherche une chaîne localisée semblable à Not planned.
         /// </summary>
         internal static string Legend_Todo {
             get {
@@ -205,38 +205,65 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Toggle Clears.
+        ///   Recherche une chaîne localisée semblable à Refresh clears and update colors.
         /// </summary>
-        internal static string MainWindow_Button_Toggle_Label {
+        internal static string MainWindow_Button_Refresh_Tooltip {
             get {
-                return ResourceManager.GetString("MainWindow_Button_Toggle_Label", resourceCulture);
+                return ResourceManager.GetString("MainWindow_Button_Refresh_Tooltip", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Hide / Show clears.
+        ///   Recherche une chaîne localisée semblable à Show Clears.
         /// </summary>
-        internal static string MainWindow_Button_Toggle_Tooltip {
+        internal static string MainWindow_Button_ToggleEncounterDrawMode_Neutral {
             get {
-                return ResourceManager.GetString("MainWindow_Button_Toggle_Tooltip", resourceCulture);
+                return ResourceManager.GetString("MainWindow_Button_ToggleEncounterDrawMode_Neutral", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Toggle Week display.
+        ///   Recherche une chaîne localisée semblable à Hide Clears.
         /// </summary>
-        internal static string MainWindow_Button_Toggle_Week_Label {
+        internal static string MainWindow_Button_ToggleEncounterDrawMode_Progression {
             get {
-                return ResourceManager.GetString("MainWindow_Button_Toggle_Week_Label", resourceCulture);
+                return ResourceManager.GetString("MainWindow_Button_ToggleEncounterDrawMode_Progression", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Hide / Show week display.
+        ///   Recherche une chaîne localisée semblable à Show / Hide  clears.
         /// </summary>
-        internal static string MainWindow_Button_Toggle_Week_Tooltip {
+        internal static string MainWindow_Button_ToggleEncounterDrawMode_Tooltip {
             get {
-                return ResourceManager.GetString("MainWindow_Button_Toggle_Week_Tooltip", resourceCulture);
+                return ResourceManager.GetString("MainWindow_Button_ToggleEncounterDrawMode_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Show week.
+        /// </summary>
+        internal static string MainWindow_Button_ToggleTableDrawMode_Areas {
+            get {
+                return ResourceManager.GetString("MainWindow_Button_ToggleTableDrawMode_Areas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Toggle between week / areas display.
+        /// </summary>
+        internal static string MainWindow_Button_ToggleTableDrawMode_Tooltip {
+            get {
+                return ResourceManager.GetString("MainWindow_Button_ToggleTableDrawMode_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Show areas.
+        /// </summary>
+        internal static string MainWindow_Button_ToggleTableDrawMode_Week {
+            get {
+                return ResourceManager.GetString("MainWindow_Button_ToggleTableDrawMode_Week", resourceCulture);
             }
         }
         
