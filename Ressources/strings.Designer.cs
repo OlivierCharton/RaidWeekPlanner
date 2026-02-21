@@ -144,27 +144,54 @@ namespace RaidWeekPlanner {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Done.
         /// </summary>
-        internal static string Legend_Done {
+        internal static string Legend_Done_Label {
             get {
-                return ResourceManager.GetString("Legend_Done", resourceCulture);
+                return ResourceManager.GetString("Legend_Done_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Already cleared.
+        /// </summary>
+        internal static string Legend_Done_Tooltip {
+            get {
+                return ResourceManager.GetString("Legend_Done_Tooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Never.
         /// </summary>
-        internal static string Legend_None {
+        internal static string Legend_None_Label {
             get {
-                return ResourceManager.GetString("Legend_None", resourceCulture);
+                return ResourceManager.GetString("Legend_None_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à These are never on the weekly rotation.
+        /// </summary>
+        internal static string Legend_None_Tooltip {
+            get {
+                return ResourceManager.GetString("Legend_None_Tooltip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Planned.
         /// </summary>
-        internal static string Legend_Planned {
+        internal static string Legend_Planned_Label {
             get {
-                return ResourceManager.GetString("Legend_Planned", resourceCulture);
+                return ResourceManager.GetString("Legend_Planned_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Planned this week.
+        /// </summary>
+        internal static string Legend_Planned_Tooltip {
+            get {
+                return ResourceManager.GetString("Legend_Planned_Tooltip", resourceCulture);
             }
         }
         
@@ -180,9 +207,18 @@ namespace RaidWeekPlanner {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Not planned.
         /// </summary>
-        internal static string Legend_Todo {
+        internal static string Legend_Todo_Label {
             get {
-                return ResourceManager.GetString("Legend_Todo", resourceCulture);
+                return ResourceManager.GetString("Legend_Todo_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Not in the weekly rotation.
+        /// </summary>
+        internal static string Legend_Todo_Tooltip {
+            get {
+                return ResourceManager.GetString("Legend_Todo_Tooltip", resourceCulture);
             }
         }
         
@@ -214,33 +250,6 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Show Clears.
-        /// </summary>
-        internal static string MainWindow_Button_ToggleEncounterDrawMode_Neutral {
-            get {
-                return ResourceManager.GetString("MainWindow_Button_ToggleEncounterDrawMode_Neutral", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Hide Clears.
-        /// </summary>
-        internal static string MainWindow_Button_ToggleEncounterDrawMode_Progression {
-            get {
-                return ResourceManager.GetString("MainWindow_Button_ToggleEncounterDrawMode_Progression", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Show / Hide  clears.
-        /// </summary>
-        internal static string MainWindow_Button_ToggleEncounterDrawMode_Tooltip {
-            get {
-                return ResourceManager.GetString("MainWindow_Button_ToggleEncounterDrawMode_Tooltip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une chaîne localisée semblable à Show week.
         /// </summary>
         internal static string MainWindow_Button_ToggleTableDrawMode_Areas {
@@ -264,6 +273,15 @@ namespace RaidWeekPlanner {
         internal static string MainWindow_Button_ToggleTableDrawMode_Week {
             get {
                 return ResourceManager.GetString("MainWindow_Button_ToggleTableDrawMode_Week", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This module does not track raid encounters (strike) clear, they will always appear &quot;To do&quot;.
+        /// </summary>
+        internal static string MainWindow_Label_ClearTrack_Notice {
+            get {
+                return ResourceManager.GetString("MainWindow_Label_ClearTrack_Notice", resourceCulture);
             }
         }
         

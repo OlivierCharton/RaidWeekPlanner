@@ -126,35 +126,38 @@
   <data name="CornerIcon_Tooltip_Warning" xml:space="preserve">
     <value>RaidWeekPlanner - api error, please wait</value>
   </data>
-  <data name="MainWindow_Button_ToggleEncounterDrawMode_Tooltip" xml:space="preserve">
-    <value>Show / Hide  clears</value>
-  </data>
   <data name="MainWindow_Button_Refresh_Label" xml:space="preserve">
     <value>Refresh </value>
   </data>
   <data name="NoData" xml:space="preserve">
     <value>No data, please wait a moment and refresh!</value>
   </data>
-  <data name="Legend_None" xml:space="preserve">
+  <data name="Legend_None_Label" xml:space="preserve">
     <value>Never</value>
   </data>
-  <data name="Legend_Todo" xml:space="preserve">
+  <data name="Legend_None_Tooltip" xml:space="preserve">
+    <value>These are never on the weekly rotation</value>
+  </data>
+  <data name="Legend_Todo_Label" xml:space="preserve">
     <value>Not planned</value>
   </data>
-  <data name="Legend_Done" xml:space="preserve">
+  <data name="Legend_Todo_Tooltip" xml:space="preserve">
+    <value>Not in the weekly rotation</value>
+  </data>
+  <data name="Legend_Done_Label" xml:space="preserve">
     <value>Done</value>
+  </data>
+  <data name="Legend_Done_Tooltip" xml:space="preserve">
+    <value>Already cleared</value>
   </data>
   <data name="Legend_Title" xml:space="preserve">
     <value>Legend:</value>
   </data>
-  <data name="Legend_Planned" xml:space="preserve">
+  <data name="Legend_Planned_Label" xml:space="preserve">
     <value>Planned</value>
   </data>
-  <data name="MainWindow_Button_ToggleEncounterDrawMode_Neutral" xml:space="preserve">
-    <value>Show Clears</value>
-  </data>
-  <data name="MainWindow_Button_ToggleEncounterDrawMode_Progression" xml:space="preserve">
-    <value>Hide Clears</value>
+  <data name="Legend_Planned_Tooltip" xml:space="preserve">
+    <value>Planned this week</value>
   </data>
   <data name="day0" xml:space="preserve">
     <value>Monday</value>
@@ -188,5 +191,8 @@
   </data>
   <data name="MainWindow_Button_ToggleTableDrawMode_Tooltip" xml:space="preserve">
     <value>Toggle between week / areas display</value>
+  </data>
+  <data name="MainWindow_Label_ClearTrack_Notice" xml:space="preserve">
+    <value>This module does not track raid encounters (strike) clear, they will always appear "To do"</value>
   </data>
 </root>

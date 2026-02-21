@@ -25,7 +25,6 @@ namespace RaidWeekPlanner.UI.Views
         private List<(Panel, Label, string)> _tablePanels = new();
         private List<Label> _labels = new();
         private readonly List<StandardButton> _buttons = new();
-        private StandardButton _toggleEncounterDrawModeBtn;
         private StandardButton _toggleTableDrawModeBtn;
 
         // Data
@@ -36,7 +35,6 @@ namespace RaidWeekPlanner.UI.Views
 
         // Params
         private TableDrawMode _tableDrawMode = TableDrawMode.Week;
-        private EncounterDrawMode _encounterDrawMode = EncounterDrawMode.Progression;
 
         // DI
         private readonly BusinessService _businessService;
@@ -113,14 +111,6 @@ namespace RaidWeekPlanner.UI.Views
             });
             button.Click += async (s, e) => await RefreshData();
 
-            _buttons.Add(_toggleEncounterDrawModeBtn = new Controls.StandardButton()
-            {
-                SetLocalizedText = () => GetToggleEncounterDrawModeBtnLabel(),
-                SetLocalizedTooltip = () => strings.MainWindow_Button_ToggleEncounterDrawMode_Tooltip,
-                Parent = actionContainer
-            });
-            _toggleEncounterDrawModeBtn.Click += (s, e) => ToggleEncounterDrawMode();
-
             _buttons.Add(_toggleTableDrawModeBtn = new Controls.StandardButton()
             {
                 SetLocalizedText = () => GetToggleTableDrawModeBtnLabel(),
@@ -152,6 +142,20 @@ namespace RaidWeekPlanner.UI.Views
 
             #endregion Legend
 
+            #region Disclaimer
+            Controls.FlowPanel disclaimerContainer = new()
+            {
+                Parent = mainContainer,
+                WidthSizingMode = SizingMode.Fill,
+                HeightSizingMode = SizingMode.AutoSize,
+                OuterControlPadding = new(5),
+                ControlPadding = new(5),
+            };
+
+            UiUtils.CreateLabel(() => strings.MainWindow_Label_ClearTrack_Notice, () => "", disclaimerContainer, amount: 1);
+
+            #endregion Disclaimer
+
             DrawLegend(legendContainer);
 
             DrawTable();
@@ -172,9 +176,6 @@ namespace RaidWeekPlanner.UI.Views
         }
 
         #region Labels
-        public string GetToggleEncounterDrawModeBtnLabel() => _encounterDrawMode == EncounterDrawMode.Neutral ?
-                strings.MainWindow_Button_ToggleEncounterDrawMode_Neutral : strings.MainWindow_Button_ToggleEncounterDrawMode_Progression;
-
         public string GetToggleTableDrawModeBtnLabel() => _tableDrawMode == TableDrawMode.Week ?
                 strings.MainWindow_Button_ToggleTableDrawMode_Week : strings.MainWindow_Button_ToggleTableDrawMode_Areas;
         #endregion Labels
@@ -184,16 +185,16 @@ namespace RaidWeekPlanner.UI.Views
         {
             var legend = UiUtils.CreateLabel(() => strings.Legend_Title, () => "", container, amount: 12);
 
-            legend = UiUtils.CreateLabel(() => strings.Legend_None, () => "", container, amount: 11);
+            legend = UiUtils.CreateLabel(() => strings.Legend_None_Label, () => strings.Legend_None_Tooltip, container, amount: 11);
             legend.panel.BackgroundColor = Colors.None;
 
-            legend = UiUtils.CreateLabel(() => strings.Legend_Todo, () => "", container, amount: 11);
+            legend = UiUtils.CreateLabel(() => strings.Legend_Todo_Label, () => strings.Legend_Todo_Tooltip, container, amount: 11);
             legend.panel.BackgroundColor = Colors.Todo;
 
-            legend = UiUtils.CreateLabel(() => strings.Legend_Planned, () => "", container, amount: 11);
+            legend = UiUtils.CreateLabel(() => strings.Legend_Planned_Label, () => strings.Legend_Planned_Tooltip, container, amount: 11);
             legend.panel.BackgroundColor = Colors.Planned;
 
-            legend = UiUtils.CreateLabel(() => strings.Legend_Done, () => "", container, amount: 11);
+            legend = UiUtils.CreateLabel(() => strings.Legend_Done_Label, () => strings.Legend_Done_Tooltip, container, amount: 11);
             legend.panel.BackgroundColor = Colors.Done;
         }
 
@@ -316,28 +317,20 @@ namespace RaidWeekPlanner.UI.Views
             if (string.IsNullOrEmpty(encounterKey))
                 return Colors.Empty;
 
-            return (_tableDrawMode, _encounterDrawMode) switch
+            return _tableDrawMode switch
             {
-                (TableDrawMode.Week, EncounterDrawMode.Neutral)
-                    => Colors.Planned,
-
-                (TableDrawMode.Week, EncounterDrawMode.Progression) when IsCleared(encounterKey)
+                TableDrawMode.Week when IsCleared(encounterKey)
                     => Colors.Done,
-                (TableDrawMode.Week, EncounterDrawMode.Progression)
+                TableDrawMode.Week
                     => Colors.Planned,
-
-                (TableDrawMode.Areas, EncounterDrawMode.Neutral) when _neverOnTheMenu.Contains(encounterKey)
+                
+                TableDrawMode.Areas when IsCleared(encounterKey)
+                    => Colors.Done,
+                TableDrawMode.Areas when IsPlanned(encounterKey)
+                    => Colors.Planned,
+                TableDrawMode.Areas when _neverOnTheMenu.Contains(encounterKey)
                     => Colors.None,
-                (TableDrawMode.Areas, EncounterDrawMode.Neutral) when IsPlanned(encounterKey)
-                    => Colors.Planned,
-                (TableDrawMode.Areas, EncounterDrawMode.Neutral)
-                    => Colors.Todo,
-
-                (TableDrawMode.Areas, EncounterDrawMode.Progression) when IsCleared(encounterKey)
-                    => Colors.Done,
-                (TableDrawMode.Areas, EncounterDrawMode.Progression) when IsPlanned(encounterKey)
-                    => Colors.Planned,
-                (TableDrawMode.Areas, EncounterDrawMode.Progression)
+                TableDrawMode.Areas
                     => Colors.Todo,
 
                 _ => Colors.Todo
@@ -370,16 +363,6 @@ namespace RaidWeekPlanner.UI.Views
             UpdateColors();
 
             _loadingSpinner.Visible = false;
-        }
-
-        private void ToggleEncounterDrawMode()
-        {
-            _encounterDrawMode = _encounterDrawMode == EncounterDrawMode.Neutral ?
-                EncounterDrawMode.Progression : EncounterDrawMode.Neutral;
-
-            UpdateColors();
-
-            _toggleEncounterDrawModeBtn.Text = GetToggleEncounterDrawModeBtnLabel();
         }
 
         private void ToggleTableDrawMode()
