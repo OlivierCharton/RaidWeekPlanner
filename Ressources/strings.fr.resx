@@ -193,6 +193,6 @@
     <value>Basculer entre affichage par semaine ou par zone</value>
   </data>
   <data name="MainWindow_Label_ClearTrack_Notice" xml:space="preserve">
-    <value>Ce module ne vérifie pas la complétion des rencontres de raid (strike), elles apparaîront toujours "A faire"</value>
+    <value>Il n'est pas possible de vérifier la complétion de Forge de l'acier, en raison de limitation API.</value>
   </data>
 </root>

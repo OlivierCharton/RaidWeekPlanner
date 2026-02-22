@@ -48,18 +48,57 @@ namespace RaidWeekPlanner.Services
 
             try
             {
-                var data = await _gw2ApiManager.Gw2ApiClient.V2.Account.Raids.GetAsync();
+                var raidData = await _gw2ApiManager.Gw2ApiClient.V2.Account.Raids.GetAsync();
+                var strikeData = await GetStrikeClear();
 
-                if (data == null)
+                if (raidData == null && strikeData == null)
                     return null;
 
-                return [.. data.Select(d => d)];
+                var clears = raidData?.Select(d => d)?.ToList() ?? [];
+                clears.AddRange(strikeData ?? []);
+
+                return clears;
             }
             catch (Exception ex)
             {
                 _logger.Warn($"Error while getting raid clears : {ex.Message}");
                 return null;
             }
+        }
+
+        private async Task<List<string>> GetStrikeClear()
+        {
+            var accountAchievements = await _gw2ApiManager.Gw2ApiClient.V2.Account.Achievements.GetAsync();
+            var strikeWeeklyClearAchievement = accountAchievements?.FirstOrDefault(a => a.Id == 9125);
+
+            if (strikeWeeklyClearAchievement == null || strikeWeeklyClearAchievement.Bits == null)
+                return null;
+
+            List<string> res = [.. strikeWeeklyClearAchievement.Bits.Select(GetStrikeName)];
+
+            return res;
+        }
+
+        private string GetStrikeName(int bit)
+        {
+            return bit switch
+            {
+                0 => "shiverpeaks_pass",
+                1 => "fraenir_of_jormag",
+                2 => "voice_and_claw",
+                3 => "whisper_of_jormag",
+                4 => "boneskinner",
+                5 => "cold_war",
+                6 => "aetherblade_hideout",
+                7 => "xunlai_jade_junkyard",
+                8 => "kaineng_overlook",
+                9 => "harvest_temple",
+                10 => "cosmic_observatory",
+                11 => "temple_of_febe",
+                12 => "old_lion_court",
+                13 => "kela",
+                _ => string.Empty
+            };
         }
     }
 }

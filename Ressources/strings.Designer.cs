@@ -277,7 +277,7 @@ namespace RaidWeekPlanner {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à This module does not track raid encounters (strike) clear, they will always appear &quot;To do&quot;.
+        ///   Recherche une chaîne localisée semblable à Forging Steel clear is not trackable, per API limitation.
         /// </summary>
         internal static string MainWindow_Label_ClearTrack_Notice {
             get {

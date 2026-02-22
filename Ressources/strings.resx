@@ -193,6 +193,6 @@
     <value>Toggle between week / areas display</value>
   </data>
   <data name="MainWindow_Label_ClearTrack_Notice" xml:space="preserve">
-    <value>This module does not track raid encounters (strike) clear, they will always appear "To do"</value>
+    <value>Forging Steel clear is not trackable, per API limitation</value>
   </data>
 </root>
