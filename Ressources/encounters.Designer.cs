@@ -106,7 +106,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Bandit Trio.
+        ///   Recherche une chaîne localisée semblable à Prison camp.
         /// </summary>
         internal static string bandit_trioTooltip {
             get {
@@ -142,7 +142,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cairn.
+        ///   Recherche une chaîne localisée semblable à Cairn the Indomitable.
         /// </summary>
         internal static string cairnTooltip {
             get {
@@ -165,6 +165,24 @@ namespace RaidWeekPlanner.Ressources {
         internal static string campTooltip {
             get {
                 return ResourceManager.GetString("campTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cold War.
+        /// </summary>
+        internal static string cold_warLabel {
+            get {
+                return ResourceManager.GetString("cold_warLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cold War.
+        /// </summary>
+        internal static string cold_warTooltip {
+            get {
+                return ResourceManager.GetString("cold_warTooltip", resourceCulture);
             }
         }
         
@@ -250,11 +268,29 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Escort.
+        ///   Recherche une chaîne localisée semblable à Siege the Stronghold.
         /// </summary>
         internal static string escortTooltip {
             get {
                 return ResourceManager.GetString("escortTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Forging Steel.
+        /// </summary>
+        internal static string forging_steelLabel {
+            get {
+                return ResourceManager.GetString("forging_steelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Forging Steel.
+        /// </summary>
+        internal static string forging_steelTooltip {
+            get {
+                return ResourceManager.GetString("forging_steelTooltip", resourceCulture);
             }
         }
         
@@ -286,7 +322,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Gate.
+        ///   Recherche une chaîne localisée semblable à Gates of Ahdashim.
         /// </summary>
         internal static string gateTooltip {
             get {
@@ -304,7 +340,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Gorseval.
+        ///   Recherche une chaîne localisée semblable à Gorseval the Multifarious.
         /// </summary>
         internal static string gorsevalTooltip {
             get {
@@ -394,7 +430,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Kela.
+        ///   Recherche une chaîne localisée semblable à Kela, Seneschal of Waves.
         /// </summary>
         internal static string kelaTooltip {
             get {
@@ -412,7 +448,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Matthias.
+        ///   Recherche une chaîne localisée semblable à Matthias Gabrel.
         /// </summary>
         internal static string matthiasTooltip {
             get {
@@ -520,7 +556,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Sabetha.
+        ///   Recherche une chaîne localisée semblable à Sabetha the Saboteur.
         /// </summary>
         internal static string sabethaTooltip {
             get {
@@ -772,7 +808,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Voice In The Void.
+        ///   Recherche une chaîne localisée semblable à Dhuum.
         /// </summary>
         internal static string voice_in_the_voidTooltip {
             get {

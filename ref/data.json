@@ -199,6 +199,15 @@
         {
           "Id": 5,
           "Key": "boneskinner"
+        },
+        {
+          "Id": 6,
+          "Key": "cold_war"
+        },
+        {
+          "Id": 7,
+          "Key": "forging_steel",
+          "IsDisabled": true
         }
       ]
     },

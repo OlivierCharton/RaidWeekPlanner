@@ -133,7 +133,7 @@
     <value>Trio</value>
   </data>
   <data name="bandit_trioTooltip" xml:space="preserve">
-    <value>Bandit Trio</value>
+    <value>Prison camp</value>
   </data>
   <data name="boneskinnerLabel" xml:space="preserve">
     <value>BS</value>
@@ -145,13 +145,19 @@
     <value>Cairn</value>
   </data>
   <data name="cairnTooltip" xml:space="preserve">
-    <value>Cairn</value>
+    <value>Cairn the Indomitable</value>
   </data>
   <data name="campLabel" xml:space="preserve">
     <value>Camp</value>
   </data>
   <data name="campTooltip" xml:space="preserve">
     <value>Ruined Camp</value>
+  </data>
+  <data name="cold_warLabel" xml:space="preserve">
+    <value>Cold War</value>
+  </data>
+  <data name="cold_warTooltip" xml:space="preserve">
+    <value>Cold War</value>
   </data>
   <data name="conjured_amalgamateLabel" xml:space="preserve">
     <value>CA</value>
@@ -181,7 +187,13 @@
     <value>Escort</value>
   </data>
   <data name="escortTooltip" xml:space="preserve">
-    <value>Escort</value>
+    <value>Siege the Stronghold</value>
+  </data>
+  <data name="forging_steelLabel" xml:space="preserve">
+    <value>Forging Steel</value>
+  </data>
+  <data name="forging_steelTooltip" xml:space="preserve">
+    <value>Forging Steel</value>
   </data>
   <data name="fraenir_of_jormagLabel" xml:space="preserve">
     <value>Fraenir</value>
@@ -193,13 +205,13 @@
     <value>Gate</value>
   </data>
   <data name="gateTooltip" xml:space="preserve">
-    <value>Gate</value>
+    <value>Gates of Ahdashim</value>
   </data>
   <data name="gorsevalLabel" xml:space="preserve">
     <value>Gorseval</value>
   </data>
   <data name="gorsevalTooltip" xml:space="preserve">
-    <value>Gorseval</value>
+    <value>Gorseval the Multifarious</value>
   </data>
   <data name="greerLabel" xml:space="preserve">
     <value>Greer</value>
@@ -229,13 +241,13 @@
     <value>Kela</value>
   </data>
   <data name="kelaTooltip" xml:space="preserve">
-    <value>Kela</value>
+    <value>Kela, Seneschal of Waves</value>
   </data>
   <data name="matthiasLabel" xml:space="preserve">
     <value>Matthias</value>
   </data>
   <data name="matthiasTooltip" xml:space="preserve">
-    <value>Matthias</value>
+    <value>Matthias Gabrel</value>
   </data>
   <data name="mursaat_overseerLabel" xml:space="preserve">
     <value>MO</value>
@@ -271,7 +283,7 @@
     <value>Sabetha</value>
   </data>
   <data name="sabethaTooltip" xml:space="preserve">
-    <value>Sabetha</value>
+    <value>Sabetha the Saboteur</value>
   </data>
   <data name="sabirLabel" xml:space="preserve">
     <value>Sabir</value>
@@ -355,7 +367,7 @@
     <value>Dhuum</value>
   </data>
   <data name="voice_in_the_voidTooltip" xml:space="preserve">
-    <value>Voice In The Void</value>
+    <value>Dhuum</value>
   </data>
   <data name="whisper_of_jormagLabel" xml:space="preserve">
     <value>Whisper</value>

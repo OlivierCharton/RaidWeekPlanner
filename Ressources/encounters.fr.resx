@@ -133,25 +133,31 @@
     <value>Trio</value>
   </data>
   <data name="bandit_trioTooltip" xml:space="preserve">
-    <value>Le Trio de bandits</value>
+    <value>Camp de prisonniers</value>
   </data>
   <data name="boneskinnerLabel" xml:space="preserve">
     <value>BS</value>
   </data>
   <data name="boneskinnerTooltip" xml:space="preserve">
-    <value>Boneskinner</value>
+    <value>Désosseur</value>
   </data>
   <data name="cairnLabel" xml:space="preserve">
     <value>Cairn</value>
   </data>
   <data name="cairnTooltip" xml:space="preserve">
-    <value>Cairn</value>
+    <value>Cairn l'Indomptable</value>
   </data>
   <data name="campLabel" xml:space="preserve">
     <value>Camp</value>
   </data>
   <data name="campTooltip" xml:space="preserve">
     <value>Campement en ruines</value>
+  </data>
+  <data name="cold_warLabel" xml:space="preserve">
+    <value>Guerre froide</value>
+  </data>
+  <data name="cold_warTooltip" xml:space="preserve">
+    <value>Guerre froide</value>
   </data>
   <data name="conjured_amalgamateLabel" xml:space="preserve">
     <value>CA</value>
@@ -163,7 +169,7 @@
     <value>CO</value>
   </data>
   <data name="cosmic_observatoryTooltip" xml:space="preserve">
-    <value>Observatoire Cosmique</value>
+    <value>Observatoire cosmique</value>
   </data>
   <data name="decimaLabel" xml:space="preserve">
     <value>Decima</value>
@@ -181,7 +187,13 @@
     <value>Escorte</value>
   </data>
   <data name="escortTooltip" xml:space="preserve">
-    <value>Escorte</value>
+    <value>Assiéger la forteresse</value>
+  </data>
+  <data name="forging_steelLabel" xml:space="preserve">
+    <value>Forge</value>
+  </data>
+  <data name="forging_steelTooltip" xml:space="preserve">
+    <value>Forge de l'acier</value>
   </data>
   <data name="fraenir_of_jormagLabel" xml:space="preserve">
     <value>Fraenir</value>
@@ -193,13 +205,13 @@
     <value>Gate</value>
   </data>
   <data name="gateTooltip" xml:space="preserve">
-    <value>La porte</value>
+    <value>Portes d'Ahdashim</value>
   </data>
   <data name="gorsevalLabel" xml:space="preserve">
     <value>Gorseval</value>
   </data>
   <data name="gorsevalTooltip" xml:space="preserve">
-    <value>Gorseval</value>
+    <value>Gorseval le Disparate</value>
   </data>
   <data name="greerLabel" xml:space="preserve">
     <value>Greer</value>
@@ -229,7 +241,7 @@
     <value>Kela</value>
   </data>
   <data name="kelaTooltip" xml:space="preserve">
-    <value>Kela</value>
+    <value>Kela, sénéchal des vagues</value>
   </data>
   <data name="matthiasLabel" xml:space="preserve">
     <value>Matthias</value>
@@ -259,19 +271,19 @@
     <value>QTP</value>
   </data>
   <data name="qadim_the_peerlessTooltip" xml:space="preserve">
-    <value>Qadim L'inégalé</value>
+    <value>Qadim L'Inégalé</value>
   </data>
   <data name="river_of_soulsLabel" xml:space="preserve">
     <value>Rivière</value>
   </data>
   <data name="river_of_soulsTooltip" xml:space="preserve">
-    <value>La Rivière des Âmes</value>
+    <value>Rivière des âmes</value>
   </data>
   <data name="sabethaLabel" xml:space="preserve">
     <value>Sabetha</value>
   </data>
   <data name="sabethaTooltip" xml:space="preserve">
-    <value>Sabetha</value>
+    <value>Sabetha la saboteuse</value>
   </data>
   <data name="sabirLabel" xml:space="preserve">
     <value>Sabir</value>
@@ -316,7 +328,7 @@
     <value>Statues de Grenth</value>
   </data>
   <data name="temple_of_febeLabel" xml:space="preserve">
-    <value>Cerus</value>
+    <value>Cérus</value>
   </data>
   <data name="temple_of_febeTooltip" xml:space="preserve">
     <value>Temple de Febe</value>
@@ -355,7 +367,7 @@
     <value>Dhuum</value>
   </data>
   <data name="voice_in_the_voidTooltip" xml:space="preserve">
-    <value>Voix du Néant</value>
+    <value>Dhuum</value>
   </data>
   <data name="whisper_of_jormagLabel" xml:space="preserve">
     <value>Murmure</value>

@@ -142,34 +142,34 @@
     <value>W8</value>
   </data>
   <data name="W1Tooltip" xml:space="preserve">
-    <value>W1</value>
+    <value>Vallée des esprits</value>
   </data>
   <data name="W5Tooltip" xml:space="preserve">
-    <value>W5</value>
+    <value>Salle des chaînes</value>
   </data>
   <data name="W3Tooltip" xml:space="preserve">
-    <value>W3</value>
+    <value>Forteresse des Fidèles</value>
   </data>
   <data name="W7Tooltip" xml:space="preserve">
-    <value>W7</value>
+    <value>La clé d'Ahdashim</value>
   </data>
   <data name="W2Tooltip" xml:space="preserve">
-    <value>W2</value>
+    <value>Passage de la rédemption</value>
   </data>
   <data name="W6Tooltip" xml:space="preserve">
-    <value>W6</value>
+    <value>Gambit de forgeconte</value>
   </data>
   <data name="W4Tooltip" xml:space="preserve">
-    <value>W4</value>
+    <value>Bastion du pénitent</value>
   </data>
   <data name="W8Tooltip" xml:space="preserve">
-    <value>W8</value>
+    <value>Mont Balrior</value>
   </data>
   <data name="IBSLabel" xml:space="preserve">
     <value>IBS</value>
   </data>
   <data name="IBSTooltip" xml:space="preserve">
-    <value>Epopée de Givre</value>
+    <value>Épopée du Givre</value>
   </data>
   <data name="SOTOLabel" xml:space="preserve">
     <value>Soto</value>

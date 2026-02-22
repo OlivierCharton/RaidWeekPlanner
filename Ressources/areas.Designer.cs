@@ -19,7 +19,7 @@ namespace RaidWeekPlanner.Ressources {
     // à l'aide d'un outil, tel que ResGen ou Visual Studio.
     // Pour ajouter ou supprimer un membre, modifiez votre fichier .ResX, puis réexécutez ResGen
     // avec l'option /str ou régénérez votre projet VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class areas {
@@ -142,7 +142,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W1.
+        ///   Recherche une chaîne localisée semblable à Spirit Vale.
         /// </summary>
         internal static string W1Tooltip {
             get {
@@ -160,7 +160,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W2.
+        ///   Recherche une chaîne localisée semblable à Salvation Pass.
         /// </summary>
         internal static string W2Tooltip {
             get {
@@ -178,7 +178,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W3.
+        ///   Recherche une chaîne localisée semblable à Stronghold of the Faithful.
         /// </summary>
         internal static string W3Tooltip {
             get {
@@ -196,7 +196,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W4.
+        ///   Recherche une chaîne localisée semblable à Bastion of the Penitent.
         /// </summary>
         internal static string W4Tooltip {
             get {
@@ -214,7 +214,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W5.
+        ///   Recherche une chaîne localisée semblable à Hall of Chains.
         /// </summary>
         internal static string W5Tooltip {
             get {
@@ -232,7 +232,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W6.
+        ///   Recherche une chaîne localisée semblable à Mythwright Gambit.
         /// </summary>
         internal static string W6Tooltip {
             get {
@@ -250,7 +250,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W7.
+        ///   Recherche une chaîne localisée semblable à The key of Ahdashim.
         /// </summary>
         internal static string W7Tooltip {
             get {
@@ -268,7 +268,7 @@ namespace RaidWeekPlanner.Ressources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à W8.
+        ///   Recherche une chaîne localisée semblable à Mount Balrior.
         /// </summary>
         internal static string W8Tooltip {
             get {
