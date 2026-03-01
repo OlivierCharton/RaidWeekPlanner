@@ -126,7 +126,7 @@ namespace RaidWeekPlanner.Services
 
         private List<string> GetEventsForDate(DateTime targetDate)
         {
-            int daysPassed = (targetDate - _rotation.StartDate).Days;
+            int daysPassed = GetDaysPassedWithFictionalLeapDays(targetDate);
 
             if (daysPassed < 0)
             {
@@ -146,6 +146,35 @@ namespace RaidWeekPlanner.Services
             }
 
             return results;
+        }
+
+        private int GetDaysPassedWithFictionalLeapDays(DateTime targetDate)
+        {
+            int daysPassed = (targetDate - _rotation.StartDate).Days;
+
+            // Compter les 29 fév fictifs entre StartDate et targetDate (exclusif)
+            int fictionalLeapDays = CountFictionalLeapDays(_rotation.StartDate, targetDate);
+
+            return daysPassed + fictionalLeapDays;
+        }
+
+        private int CountFictionalLeapDays(DateTime from, DateTime to)
+        {
+            int count = 0;
+            // Pour chaque année non-bissextile entre from et to,
+            // si on a passé le 28 fév, on compte un jour fictif
+            for (int year = from.Year; year <= to.Year; year++)
+            {
+                if (!DateTime.IsLeapYear(year))
+                {
+                    DateTime fictionalLeapDay = new DateTime(year, 3, 1).AddHours(1); // Le "29 fév" fictif = 1er mars
+                    if (fictionalLeapDay > from && fictionalLeapDay <= to)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
